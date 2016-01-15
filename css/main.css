@@ -1,0 +1,46 @@
+body{
+
+    font-weight: 300;
+    background-image: url('../img/green baize background.jpg');
+    width: 1600px;
+    color: #ff0000;
+    height: 1200px;
+
+    background-repeat: round;
+}
+
+.header{
+    color:white;
+    text-align: center;
+}
+
+
+
+#actionDiv{
+    min-height:100%;
+    position:relative;
+    align-content: center;;
+    margin-top:25px;
+    text-align: center;
+
+}
+
+td
+{
+}
+
+table{
+    align-content: center;
+    width: 1000px;
+    border-collapse: separate;
+    border-spacing: 0 3em;
+
+}
+
+#title{
+
+    padding-top: 200px;
+
+}
+
+
