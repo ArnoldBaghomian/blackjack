@@ -41,7 +41,7 @@ function makeDeck()
         var e = {};  // make the next card
         e.suit = Math.floor(i/13);  // 0 = clubs, 1 = diamonds, 2 = hearts, 3 = spades
         e.pips = i%13 + 2;   // 0 .. 10 = value, 11 = j, 12 = q, 13 = k, 14 = A
-        e.value = (i%13 > 9) ? 10 : i%13+2;  // point value of card
+        e.value = (i%13 > 8) ? 10 : i%13+2;  // point value of card
         if (e.pips===14)  // aces count for 11
             e.value = 11;
         e.url = "cards/"+(i%13).toString() + suits[e.suit]+".png";  // cards are images with simple file names
@@ -58,11 +58,11 @@ function resetGame()  // mark all the cards not used
 {
     deck.forEach(function(c)   // put all the cards back in the deck
     {
-        c.used = false;
+        c.dealt = false;
     });
     playerHand = []; // empty both hands
     dealerHand = [];
-    clearDealerHand();
+    clearDealerHand();  //remove cards from table
     clearPlayerHand();
 }
 
@@ -92,7 +92,6 @@ function hitDealer()
        image[0].setAttribute('src',cardBack);
     else
        image[0].setAttribute('src',dealerHand[dealerHand.length-1].url);
-
 
 
     dealerCount = count(dealerHand);
@@ -143,6 +142,7 @@ function hitPlayer(event)
     var image = $("table").find('tr:nth-child(4)').find('img').eq(playerHand.length-1);
 
     image[0].setAttribute('src',playerHand[playerHand.length-1].url);
+
     playerCount = count(playerHand);
     var acesCount = playerAcesCount;
     while(playerCount > 21 && acesCount > 0)   // aces can be one if need be
